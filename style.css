@@ -1,0 +1,21 @@
+@font-face {
+    font-family: Perfograma;
+    src: url('fonts/Perfograma.otf') format("opentype");
+}
+
+@font-face {
+    font-family: CoconPro;
+    src: url('fonts/CoconPro-Regular_0.otf') format("opentype");
+}
+
+body {
+    background-image: url("pictures/codemas_bg.png");
+}
+
+h1 {
+    font-family: Perfograma;
+}
+
+h2 {
+    font-family: CoconPro;
+}
