@@ -35,7 +35,6 @@ main {
 .content {
     margin: 0 auto;
     padding: 10px;
-    height: 100vh;
 }
 
 h2 {
@@ -46,7 +45,7 @@ h2 {
 
 p {
     font-family: "Open Sans";
-    font-size: 20px;
+    font-size: 15px;
     color: #2D2E83;
 }
 
@@ -75,8 +74,16 @@ a:hover {
     background-color: white;
 }
 
-video {
-    text-align: center;
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.buttons .btn-child {
+    flex-grow: 1;
+    flex-basis: 20%;
+    padding: 10px;
 }
 
 #pop-up {
@@ -122,16 +129,22 @@ video {
         top:0;
         left:0;
 
-        background:rgba(255,255,255,0.8);
-
         display: flex;
         justify-content: center;
+        margin: 0 auto;
+        height: 100vh;
+    }
+
+    video {
+        width: 70%;
+        display: block;
         margin: 0 auto;
     }
 
     .content {
         width: 80%;
     }
+
 
     body {
         display: flex;
@@ -144,6 +157,14 @@ video {
         margin-right: auto;
         max-width: 50%;
         max-width: 30%;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 35px;
     }
 
 }
