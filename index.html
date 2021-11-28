@@ -1,69 +1,108 @@
 <!DOCTYPE html>
 
 <html lang="cs">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-        <title>Codemas</title>
-    </head>
 
-    <body>
-        <main>
-            <div class="content">
-                <h1 class="main-header">Codemas</h1>
-                <h2>Dostaň Perníčka na Vánoce domů!</h2>
-                <p>Vytvoř si kouzelnou vánoční hru, kterou si pak můžeš zahrát se svou rodinou nebo přáteli. Zábavnou formou se naučíš programovat v jazyce JavaScript, který se využívá při tvorbě webových stránek. Vše ti krok po kroku vysvětlíme.</p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Codemas</title>
+</head>
 
-                <video controls autoplay muted>
-                    <source src="videos/codemas_2021.mp4" type="video/mp4">
-                    Your browser does not support HTML video.
-                </video>
+<body>
+    <main>
+        <div class="content">
+            <h1 class="main-header">Codemas</h1>
+            <h2>Dostaň Perníčka na Vánoce domů!</h2>
+            <p>Vytvoř si kouzelnou vánoční hru, kterou si pak můžeš zahrát se svou rodinou nebo přáteli. Zábavnou formou
+                se naučíš programovat v jazyce JavaScript, který se využívá při tvorbě webových stránek. Vše ti krok po
+                kroku vysvětlíme.</p>
 
-                <div class="buttons">
-                    <div class="btn-child">
-                        <a href="#">I. díl</a>
-                    </div>
-                    <div class="btn-child" id="btn">
-                        <a href="#">II. díl</a>
-                    </div>
-                    <div class="btn-child" id="btn">
-                        <a href="#">III. díl</a>
-                    </div>
-                    <div class="btn-child" id="btn">
-                        <a href="#">IV. díl</a>
-                    </div>
-                    <div class="btn-child" id="btn">
-                        <a href="#">V. díl</a>
-                    </div>
-                    <div class="btn-child" id="btn">
-                        <a href="#">VI. díl</a>
-                    </div>
-                    <div class="btn-child" id="btn">
-                        <a href="#">VII. díl</a>
-                    </div>
-                    <div class="btn-child" id="btn">
-                        <a href="#">VIII. díl</a>
-                    </div>
+            <video controls autoplay muted>
+                <source src="videos/codemas_2021.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+
+            <div class="buttons">
+                <div class="btn-child">
+                    <a class="a-btn" href="clanky/I-dil.html">I. díl</a>
                 </div>
-            </div>
-        </main>
-
-        <div id="pop-up">
-            <div class="pop-up-content">
-                <div class="close">
-                    <img id="close" src="pictures/close_24px.svg" alt="close">
+                <div class="btn-child" id="btn">
+                    <a class="a-btn" href="#">II. díl</a>
                 </div>
-                <img src="pictures/timer.svg" id="timer" alt="timer">
-                <h2>Už se to blíží</h2>
-                <p>První díl návodu zveřejníme v neděli 28.11.</p>
+
             </div>
         </div>
+    </main>
 
-        <script src="script.js"></script>
-    </body>
+    <div id="pop-up">
+        <div class="pop-up-content">
+            <div class="close">
+                <img id="close" src="pictures/close_24px.svg" alt="close">
+            </div>
+            <img src="pictures/timer.svg" id="timer" alt="timer">
+            <h2>Už se to blíží</h2>
+            <p>První díl návodu zveřejníme v <span class="next-article">neděli 28.11. (ve 13:00)</span></p>
+
+            <div id="mc_embed_signup">
+                <form
+                    action="https://czechitas.us11.list-manage.com/subscribe/post?u=0e7542c1a9212e5477703c266&amp;id=1918f6e6ef"
+                    method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+                    target="_blank" novalidate>
+                    <div id="mc_embed_signup_scroll">
+                        <p style="font-weight: bold;">Chci dostávat upozornění na nové díly Codemasu!</p>
+                        <div class="mc-field-group">
+                            <label for="mce-EMAIL">E-mailová adresa</label>
+                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                        </div>
+                        <div class="mc-field-group">
+                            <label for="mce-FNAME">Jméno </label>
+                            <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                        </div>
+                        <div class="mc-field-group">
+                            <label for="mce-LNAME">Příjmení </label>
+                            <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                        </div>
+                        <p class="GDPR">Odesláním formuláře souhlasím se zasíláním novinek o akcích Czechitas. <a href="https://www.czechitas.cz/zpracovani-osobnich-udaju">Podmínky zpracování osobních údajů</a></p>
+                        <div id="mce-responses" class="clear">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>
+                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
+                                name="b_0e7542c1a9212e5477703c266_1918f6e6ef" tabindex="-1" value=""></div>
+                        <div class="clear"><input type="submit" value="Odeslat" name="subscribe"
+                                id="mc-embedded-subscribe" class="button"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script type='text/javascript'>
+        (function ($) {
+            window.fnames = new Array();
+            window.ftypes = new Array();
+            fnames[0] = 'EMAIL';
+            ftypes[0] = 'email';
+            fnames[1] = 'FNAME';
+            ftypes[1] = 'text';
+            fnames[2] = 'LNAME';
+            ftypes[2] = 'text';
+            fnames[3] = 'ADDRESS';
+            ftypes[3] = 'address';
+            fnames[4] = 'PHONE';
+            ftypes[4] = 'phone';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
+    <!--End mc_embed_signup-->
+    <script src="script.js"></script>
+</body>
+
 </html>
