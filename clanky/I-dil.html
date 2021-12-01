@@ -1,81 +1,108 @@
 <!DOCTYPE html>
 
 <html lang="cs">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../style.css">
-        <link rel="stylesheet" href="design.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-        <title>Codemas</title>
-    </head>
 
-    <body>
-        <main>
-            <div class="content">
-                <p>Ahoj, vítej u prvního dílu letošní vánoční výzvy. Čeká nás důležitý úkol – společnými silami musíme zachránit pana Perníčka a jeho Vánoce. Navíc se u toho podíváme do světa programování. </p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css?v1.0">
+    <link rel="stylesheet" href="design.css?v1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Codemas</title>
+</head>
 
-                <p>Takhle bude na konci vypadat naše hra:</p>
+<body>
+    <main>
+        <div class="content">
+            <h1>I. díl Codemas</h1>
+            <p>Ahoj, vítej u prvního dílu letošní vánoční výzvy. Čeká nás důležitý úkol – společnými silami musíme
+                zachránit pana Perníčka a jeho Vánoce. Navíc se u toho podíváme do světa programování. </p>
 
-                <p>Pojďme začít tím, že si nastavíme prostředí, ve kterém celou hru budeme programovat. Mrkni do prerekvizit, kde zjistíš, jak si vytvořit účet v prostředí editoru Repl.it. Nemusíš si vytvářet nový projekt, budeme potřebovat několik předpřipravených kódů, proto si projekt prosím “naklonuj” z mého zadání, které najdeš tady. Stačí kliknout na Fork repl. Nový projekt se ti automaticky otevře ve tvém účtu.</p>
+            <p>Takhle bude na konci vypadat naše hra:</p>
 
-                <p>Pokud máme projekt naklonovaný, můžeme se pustit do kódování! V projektu máme 3 soubory – <strong>index.html, style.css a script.js</strong>, zároveň máme k dispozici i složku s obrázky.</p>
-                
-                <h2>Zvětšení herní plochy</h2>
-                <p>Herní ploše, do které umístíme panáčka a další herní objekty, se říká canvas. Canvas nám v HTML umožní vykreslovat různé obrázky a celkově obsahuje užitečné nástroje pro tvorbu webových her.</p>
+            <img src="pictures/I/final_game.png" alt="finalni podoba hry">
 
-                <p>Prozatím je náš canvas maličký a právě v JavaScriptu (zkráceně JS) mu určíme velikost. Jeho velikost budeme uchovávat v tzv. proměnné. Proměnná je jedna z nejzákladnějších věcí, která se v programování používá. Tak jako my si ukládáme naše myšlenky do paměti, i počítač si musí někam uložit specifické hodnoty, aby na ně nezapomněl, a my s nimi mohli pracovat. Proměnnou si tedy představ jako nějakou krabičku v paměti počítače, kam se ukládají informace.</p>
+            <p>Pojďme začít tím, že si nastavíme prostředí, ve kterém celou hru budeme programovat. Mrkni do <a
+                    href="https://docs.google.com/document/d/1ET5teL2qIZE4lii6A_0Kjzbyz2Ww2M_uaznnaDU7dgM/edit?usp=sharing"
+                    target="_blank">prerekvizit</a>, kde zjistíš, jak si vytvořit účet v prostředí editoru <a
+                    href="https://replit.com/" target="_blank">Repl.it</a>. Nemusíš si vytvářet nový projekt, budeme
+                potřebovat několik předpřipravených kódů, proto si projekt prosím “naklonuj” z mého zadání, které najdeš
+                <a href="https://replit.com/@aellopos/00-1" target="_blank">tady</a>. Stačí kliknout na Fork repl. Nový
+                projekt se ti automaticky otevře ve tvém účtu.</p>
 
-                <p>Proměnnou v JavaScriptu vytvoříme pomocí kouzelného slova <strong>let</strong> Možná už znáš odjinud deklaraci proměnné pomocí slova <strong>var</strong>. Pro naše účely dělá <strong>let a var</strong> v podstatě tu stejnou věc, my budeme používat modernější a novější <strong>let</strong>.</p>
+            <img src="pictures/I/fork.png" alt="klonovani repozitare">
 
-                <p>Když chceme v JS vytvořit novou proměnnou, uděláme to tímto způsobem:</p>
+            <p>Pokud máme projekt naklonovaný, můžeme se pustit do kódování! V projektu máme 3 soubory –
+                <strong>index.html, style.css a script.js</strong>, zároveň máme k dispozici i složku s obrázky.</p>
 
-                <p class="code">let myVariable</p>
+            <h2>Zvětšení herní plochy</h2>
+            <p>Herní ploše, do které umístíme panáčka a další herní objekty, se říká canvas. Canvas nám v HTML umožní
+                vykreslovat různé obrázky a celkově obsahuje užitečné nástroje pro tvorbu webových her.</p>
 
-                <p>Když do proměnné chceme vložit hodnotu, stačí napsat =, což je v JavaScriptu tzv. symbol přiřazení.</p>
+            <p>Prozatím je náš canvas maličký a právě v JavaScriptu (zkráceně JS) mu určíme velikost. Jeho velikost
+                budeme uchovávat v tzv. proměnné. Proměnná je jedna z nejzákladnějších věcí, která se v programování
+                používá. Tak jako my si ukládáme naše myšlenky do paměti, i počítač si musí někam uložit specifické
+                hodnoty, aby na ně nezapomněl, a my s nimi mohli pracovat. Proměnnou si tedy představ jako nějakou
+                krabičku v paměti počítače, kam se ukládají informace.</p>
 
-                <p class="code">myVariable = 7</p>
+            <p>Proměnnou v JavaScriptu vytvoříme pomocí kouzelného slova <strong>let</strong> Možná už znáš odjinud
+                deklaraci proměnné pomocí slova <strong>var</strong>. Pro naše účely dělá <strong>let a var</strong> v
+                podstatě tu stejnou věc, my budeme používat modernější a novější <strong>let</strong>.</p>
 
-                <p>Protože na začátku programu většinou potřebujeme založit proměnné a ihned do nich vložit nějaké startovní hodnoty, lze založení proměnné a přiřazení hodnoty udělat v jednom kroku (odborně se tomu říká deklarovat proměnnou):</p>
+            <p>Když chceme v JS vytvořit novou proměnnou, uděláme to tímto způsobem:</p>
 
-                <p class="code">let myVariable = 7</p>
+            <p class="code">let myVariable</p>
 
-                <p>Proměnnou pomocí slova <strong>let</strong> deklarujeme (založíme) pouze jednou. Potom už ji používáme a vkládáme do ní hodnotu pouze pomocí =.</p>
+            <p>Když do proměnné chceme vložit hodnotu, stačí napsat =, což je v JavaScriptu tzv. symbol přiřazení.</p>
 
-                <p class="code">
-                    let myVariable = 7
-	
-                    // a o chvíli později už jenom…
-                    myVariable = 13
-                </p>
-                
-                <p>Mimochodem, řádek začínající znaky // je komentář. Komentář je text, který se v programu ignoruje a neovlivňuje funkci kódu. Pomocí komentářů si můžeš do kódu dělat poznámky a spoustu poznámek najdeš i v ukázkovém kódu po každé lekci.</p>
+            <p class="code">myVariable = 7</p>
 
-                <p>Pokud nemáš s programováním zkušenosti z dřívějška, tak si všimni několika věcí:</p>
+            <p>Protože na začátku programu většinou potřebujeme založit proměnné a ihned do nich vložit nějaké startovní
+                hodnoty, lze založení proměnné a přiřazení hodnoty udělat v jednom kroku (odborně se tomu říká
+                deklarovat proměnnou):</p>
 
-                <ul>
-                    <li>Na velikosti písmen záleží – myVariable je něco jiného než myvariable.</li>
-                    <li>Ve jménech proměnných nemohou být mezery. Když chceš vytvořit víceslovný název, použij zápis, kde prvníPísmenoKaždéhoDalšíhoSlovaBudeVelké.</li>
-                    <li>Ve jménech proměnných jdou sice používat české znaky, ale je obvyklou praxí, že se používají jen písmena anglické abecedy bez háčků a čárek.</li>
-                </ul>
+            <p class="code">let myVariable = 7</p>
 
-                <p>Ve script.js už máme připravený první řádek kódu:</p>
+            <p>Proměnnou pomocí slova <strong>let</strong> deklarujeme (založíme) pouze jednou. Potom už ji používáme a
+                vkládáme do ní hodnotu pouze pomocí =.</p>
 
-                <p class="code">let canvas = document.querySelector("#canvas")</p>
+            <p class="code">let myVariable = 7
 
-                <div class="btn-view">
-                    <a href="#hd-content">Pokračovat ve čtení</a>
-                </div>
+                // a o chvíli později už jenom…
+                myVariable = 13
+            </p>
 
-                <div id="hd-content"> 
-                    
-                <p>První řádek nám odchytil canvas z HTML a díky tomu s ním můžeme v JavaScriptu pracovat. Založme si další 2 proměnné width a height, do kterých uložíme informaci o výšce a šířce:</p>
+            <p>Mimochodem, řádek začínající znaky // je komentář. Komentář je text, který se v programu ignoruje a
+                neovlivňuje funkci kódu. Pomocí komentářů si můžeš do kódu dělat poznámky a spoustu poznámek najdeš i v
+                ukázkovém kódu po každé lekci.</p>
 
-                <p class="code">
-                    let width = 600
+            <p>Pokud nemáš s programováním zkušenosti z dřívějška, tak si všimni několika věcí:</p>
+
+            <ul>
+                <li>Na velikosti písmen záleží – myVariable je něco jiného než myvariable.</li>
+                <li>Ve jménech proměnných nemohou být mezery. Když chceš vytvořit víceslovný název, použij zápis, kde
+                    prvníPísmenoKaždéhoDalšíhoSlovaBudeVelké.</li>
+                <li>Ve jménech proměnných jdou sice používat české znaky, ale je obvyklou praxí, že se používají jen
+                    písmena anglické abecedy bez háčků a čárek.</li>
+            </ul>
+
+            <p>Ve script.js už máme připravený první řádek kódu:</p>
+
+            <p class="code">let canvas = document.querySelector("#canvas")</p>
+
+            <div class="btn-view">
+                <a class="a-btn pvc" id="I-dil-pvc" href="#hd-content">Pokračovat ve čtení</a>
+            </div>
+
+            <div id="hd-content">
+
+                <p>První řádek nám odchytil canvas z HTML a díky tomu s ním můžeme v JavaScriptu pracovat. Založme si
+                    další 2 proměnné width a height, do kterých uložíme informaci o výšce a šířce:</p>
+
+                <p class="code">let width = 600
                     let height = 600
                 </p>
 
@@ -84,25 +111,42 @@
                 </p>
 
                 <p class="code">canvas.width = width
-                   canvas.height = height</p>
+                    canvas.height = height</p>
 
-                <p>Tímto doslova říkáme, že výška canvasu se rovná naší zadané výšce. Možná si říkáš, proč jsme tam tu hodnotu nenapsali rovnou, ale vkládáme ji tam skrz proměnnou. Je to nejlepší řešení s ohledem do budoucna. Kdybychom někdy v budoucnu chtěli měnit velikost canvas v kódu, budeme mít jistotu, že se na začátku našeho JavaScriptu nachází výchozí velikost, kterou kdykoliv můžeme použít. Když obnovíš stránku, měl by se ti canvas zvětšit.</p>
+                <p>Tímto doslova říkáme, že výška canvasu se rovná naší zadané výšce. Možná si říkáš, proč jsme tam tu
+                    hodnotu nenapsali rovnou, ale vkládáme ji tam skrz proměnnou. Je to nejlepší řešení s ohledem do
+                    budoucna. Kdybychom někdy v budoucnu chtěli měnit velikost canvas v kódu, budeme mít jistotu, že se
+                    na začátku našeho JavaScriptu nachází výchozí velikost, kterou kdykoliv můžeme použít. Když obnovíš
+                    stránku, měl by se ti canvas zvětšit.</p>
 
-                <p>Dnes máme hotovo! Hru si můžeme zapnout a podívat se na ni.</p>
+                <p>Dnes máme hotovo! Hru si můžeme zapnout a podívat se na ni. Hru zapneš za pomoci zeleného tlačítka
+                    run.</p>
+
+                <img src="pictures/I/prvni-spusteni.png" alt="klonovani repozitare">
 
                 <h2>Na závěr</h2>
 
                 <p>
-                    První část kódu máme za sebou! Dobrá práce. Vzorový výsledek najdeš zde. Už ve středu se vrhneme na generování celé herní plochy.
+                    První část kódu máme za sebou! Dobrá práce. Vzorový výsledek najdeš <a
+                        href="https://replit.com/@aellopos/01-1" target="_blank">zde</a> (klikni na tlačítko "Show
+                    files"). Už ve středu se vrhneme na generování celé herní plochy.
                 </p>
 
-                <p>A protože budeme psát spoustu různých závorek a dalších zajímavých znaků, tak tady je malý tahák na klávesnici.</p>
+                <p>A protože budeme psát spoustu různých závorek a dalších zajímavých znaků, tak tady je malý <a
+                        href="https://drive.google.com/file/d/1Acu_f2HUzHEJftZ0F795tFxqODy-oRjG/view?usp=sharing"
+                        target="_blank">tahák na klávesnici</a>.</p>
 
-                <p>Pokud s něčím bojuješ, neboj se nám napsat pod příspěvek na naší facebookové události, rádi ti pomůžeme. K dotazu ideálně pošli i URL adresu s odkazem na tvůj projekt. :) </p>
+                <p>Pokud s něčím bojuješ, neboj se nám napsat pod příspěvek na naší <a
+                        href="https://www.facebook.com/events/1276972712744334?ref=newsfeed" target="_blank">facebookové
+                        události</a>, rádi ti pomůžeme. K dotazu ideálně pošli i URL adresu s odkazem na tvůj projekt.
+                    :) </p>
+
+                <p>Michal z Czechitas</p>
             </div>
         </div>
-        </main>
+    </main>
 
-        <script src="script.js"></script>
-    </body>
+    <script src="script.js"></script>
+</body>
+
 </html>

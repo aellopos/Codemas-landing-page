@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css?v1.0">
+    <link rel="stylesheet" href="design.css?v1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Codemas</title>
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <h1>II. díl Codemas</h1>
+            <p>Ahoj, vítám tě u dalšího dílu Codemas. Dnes se zaměříme na herní mapu a vygenerujeme si bludiště. Naučíme se tedy pracovat s důležitou věcí, které se v programování říká pole.</p>
+            
+            <h2>Generování herní mapy</h2>
+
+            <p>Když si spustíš projekt, uvidíš, jak se nám herní plocha zvětšila. Je ale stále prázdná, chtělo by to vygenerovat herní mapu. Pojďme si udělat přípravu, než se vrhneme na samotné generování. Abychom takovou herní plochu byli schopni vygenerovat, musíme dát počítači další informace.</p>
+
+            <p>Potřebujeme si nadefinovat způsob, jakým bude canvas vykreslovat objekty. Možností je několik, nám bohatě postačí 2D vykreslování, jelikož se jedná o 2D hru. Pojďme si vytvořit novou proměnnou, kterou si nazveme <strong>ctx</strong>, a pomocí funkce <strong>getContext</strong> určíme způsob vykreslování:</p>
+
+            <p class="code">let ctx = canvas.getContext("2d")</p>
+
+            <p>Následně se nám jistě bude hodit velikost každého bloku a předmětu v bludišti, pomocí nové proměnné <strong>blockSize</strong> si nadefinujeme jednotnou velikost:</p>
+
+            <p class="code">let blockSize = 30</p>
+
+            <p>A nyní už se můžeme zamýšlet nad tím, kam uložíme tu mapu jako takovou. Pojďme se naučit další novinku, které se říká v programování <strong>pole.</strong></p>
+
+            <h2>Pole</h2>
+
+            <p>Zatím jsme se naučili, co je to proměnná. Zatím víme, že si do takové proměnné můžeme uložit jen jednu konkrétní hodnotu nebo informaci. Co když jich potřebujeme víc? Třeba seznam jmen apod. Na tyto věci se nám hodí datová struktura s názvem <strong>pole</strong>. Pole je např. toto:</p>
+
+            <p class="code">// pole textových řetězců
+                let names = ['Jana', 'Adam', 'Eliška', 'Jirka']</p>
+
+            <p>Najednou máme v proměnné <strong>names</strong> uložených několik hodnot – jmen, se kterými mohu pracovat. </p>
+
+            <p>Tady je další ukázka pole:</p>
+
+            <p class="code">// pole čísel
+                let numbers = [7, 13, 31, 53, 67]</p>
+
+            <p>V tomto poli je zase uloženo několik čísel. Všimni si, že takové pole začíná a končí hranatou závorkou a jednotlivé hodnoty oddělujeme čárkou (mezera za čárkou není nutná, slouží čistě k větší přehlednosti). </p>
+
+            <p>Jak ale počítač pozná s jakou hodnotou chceme pracovat, když tam není jen jedna hodnota? Každá hodnota v poli má svůj tzv. <strong>index</strong>, což je číslo, které nám označuje pozici hodnoty v tom poli. Každé pole začíná indexem 0. Když se znovu podíváme na pole names, tak vidíme že:</p>
+
+            <ul>
+                <li>Na indexu 0 je Jana</li>
+                <li>Na indexu 1 je Adam</li>
+                <li>Na indexu 2 je Eliška</li>
+                <li>Na indexu 3 je Jirka</li>
+            </ul>
+
+            <p>A celková délka toho pole je 4, protože uchovává 4 hodnoty. Možná je to trochu matoucí, že se začíná od 0 a ne od 1, ale ber to, prosím, jako fakt a pamatuj na to. Kdybychom index spletli, mohlo by nám to s naším programem hezky zamávat. </p>
+
+            <p>A teď kontrolní otázka! Jaká je celková délka pole numbers? Jaké má indexy? Jaké hodnoty na daných indexech jsou?</p>
+
+            <p>Tady jsou odpovědi:</p>
+
+            <ul>
+                <li>Celková délka pole je 5, uchovává 5 hodnot</li>
+                <li>Má indexy v rozsahu 0-4</li>
+                <li>Na indexu 0 je 7</li>
+                <li>Na indexu 1 je 13</li>
+                <li>Na indexu 2 je 31</li>
+                <li>Na indexu 3 je 53</li>
+                <li>Na indexu 4 je 67</li>
+            </ul>
+
+            <p>Není to tak těžké, že? 😉</p>
+
+            <p>Toto je jednoduché pole. Z obrázků je ale jasné, že nám toto pole asi stačit nebude. Mapa je čtvercová a některým už asi došlo, že se mapa bude skládat z bloků, jejichž velikost je 30 (proto ta proměnná blockSize). A když víme, že mapa má celkovou velikost 600x600, jednoduchou matematikou si spočítáme, že musíme pomocí polí vytvořit datovou strukturu 20x20, kde budou umístěné jednotlivé bloky. Záměrně říkám polí, protože místo číselné hodnoty nebo textové hodnoty můžeme vložit do pole další pole. </p>
+
+            <p>Tady je malá ochutnávka:</p>
+
+            <p class="code">let board = [
+                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                [1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1]
+             ]
+             </p>
+
+             <p>Máme pole board, který v sobě má další 2 pole, jedno na indexu 0 a jedno na indexu 1. Každé z těchto polí má v sobě hodnoty 0 a 1. Nám pak už jen stačí říct počítači, že pokud v poli narazí na jedničku, tak vykreslí zeď, a pokud na 0, nechá blok jako cestu. Vzpomeňte si, jak jste hráli lodě a umisťovali plavidla do herní plochy (čtverečkovaný papír). My tento princip přenášíme do počítačové podoby a využíváme pole. Celá proměnná board bude vypadat takto a tu si vložme do hry:</p>
+
+            <div class="btn-view">
+                <a class="a-btn pvc" id="II-dil-pvc" href="#hd-content">Pokračovat ve čtení</a>
+            </div>
+
+            <div id="hd-content">
+                <p class="code">let board = [
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                    [1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1],
+                    [1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1],
+                    [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
+                    [1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+                    [1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1],
+                    [1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1],
+                    [1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1],
+                    [1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
+                    [1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+                    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+                    [1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1],
+                    [1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
+                    [1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1],
+                    [1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1],
+                    [1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1],
+                    [1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1],
+                    [1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1],
+                    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+                 ]
+                 </p>
+
+                <p>Naše pole board má délku 20 a indexy od 0 do 19. Na každém indexu je pole, které má délku 20 a indexy od 0 do 19.</p>
+
+                <p>Máme návrh mapy a vysvětlili jsme si princip, jakým budeme s polem pracovat. Teď ho ale reálně potřebujeme vykreslit. V prvé řadě si vložme do kódu k proměnným tyto dva řádky:</p>
+
+                <p class="code">let wall = new Image()
+                    wall.src = "images/zed.png"</p>
+
+                <p>Na prvním řádku vytváříme novou proměnnou s názvem <strong>wall</strong>, do ní vkládáme informaci o tom, že v ní chceme uchovávat nějaký obrázek. Na druhém řádku pak specifikujeme přesně ten obrázek, který do proměnné chceme uložit a který využijeme při vykreslování mapy.</p>
+
+                <p>Samotnou mapu budeme vykreslovat pomocí kódů ve funkci <strong>generateBoard</strong>. Funkce je taky novinka, kterou si necháme ale až na další díl.</p>
+
+                <h2>Na závěr</h2>
+
+                <p>
+                    Dnes toho bylo hodně, hlavně teorie, ale i to je úděl programátora. Naučili jsme se spoustu nových věcí, to je super, ne? Máme připravený základ pro naše bludiště, v dalším díle se mrkneme na generování zdí. 😊  Celý kód z dneška najdeš <a href="https://replit.com/@aellopos/02-1">zde</a>. Doufám, že se ti to líbilo. Uvidíme se zase u dalšího dílu vánočního kódování.
+                </p>
+
+                <p>Pokud s něčím bojuješ, neboj se nám napsat pod příspěvek na naší <a
+                    href="https://www.facebook.com/events/1276972712744334?ref=newsfeed" target="_blank">facebookové
+                    události</a>, rádi ti pomůžeme. K dotazu ideálně pošli i URL adresu s odkazem na tvůj projekt.
+                :) </p>
+
+                <p>Začala sis pohrávat s myšlenkou, že bys chtěla prozkoumat IT trochu víc? Podívej se na <a id="II-dil-kurzy"  href="https://www.czechitas.cz/kalendar" target="_blank">nabídku kurzů od Czechitas</a>, které se zaměřují na vzdělávání převážně žen a dětí v IT. Jak si vybrat vhodný kurz zjistíš <a id="II-dil-blog" href="https://www.czechitas.cz/blog/jak-si-vybrat-kurz" target="_blank">zde</a>.</p>
+
+                <p>Michal z Czechitas</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

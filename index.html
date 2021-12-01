@@ -6,11 +6,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta name="facebook-domain-verification" content="m80pomu5co4fhp4vi1h705hd120ptb" />
+    <link rel="stylesheet" href="style.css?v1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <title>Codemas</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQ4GWQ8MJ8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BQ4GWQ8MJ8');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KHCRZJL');
+    </script>
+    <!-- End Google Tag Manager -->
+
+
 </head>
 
 <body>
@@ -18,23 +53,23 @@
         <div class="content">
             <h1 class="main-header">Codemas</h1>
             <h2>Dostaň Perníčka na Vánoce domů!</h2>
-            <p>Vytvoř si kouzelnou vánoční hru, kterou si pak můžeš zahrát se svou rodinou nebo přáteli. Zábavnou formou
-                se naučíš programovat v jazyce JavaScript, který se využívá při tvorbě webových stránek. Vše ti krok po
-                kroku vysvětlíme.</p>
+            <p>Vytvoř si kouzelnou vánoční hru, kterou si pak můžeš zahrát se svou rodinou nebo přáteli. Zábavnou formou se naučíš programovat v jazyce JavaScript, který se využívá při tvorbě webových stránek. Vše ti krok po kroku vysvětlíme v 8 dílech. </p>
 
-            <video controls autoplay muted>
+            <video controls>
                 <source src="videos/codemas_2021.mp4" type="video/mp4">
                 Your browser does not support HTML video.
             </video>
 
             <div class="buttons">
                 <div class="btn-child">
-                    <a class="a-btn" href="clanky/I-dil.html">I. díl</a>
+                    <a id="I-dil" class="a-btn" href="clanky/I-dil.html">I. díl</a>
+                </div>
+                <div class="btn-child">
+                    <a id="II-dil" class="a-btn" href="clanky/II-dil.html">II. díl</a>
                 </div>
                 <div class="btn-child" id="btn">
-                    <a class="a-btn" href="#">II. díl</a>
+                    <a class="a-btn" href="#">III. díl</a>
                 </div>
-
             </div>
         </div>
     </main>
@@ -46,7 +81,7 @@
             </div>
             <img src="pictures/timer.svg" id="timer" alt="timer">
             <h2>Už se to blíží</h2>
-            <p>První díl návodu zveřejníme v <span class="next-article">neděli 28.11. (ve 13:00)</span></p>
+            <p>Další díl návodu zveřejníme <span class="next-article"> 5.12. (ve 13:00)</span></p>
 
             <div id="mc_embed_signup">
                 <form
@@ -83,26 +118,11 @@
         </div>
     </div>
 
-    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-    <script type='text/javascript'>
-        (function ($) {
-            window.fnames = new Array();
-            window.ftypes = new Array();
-            fnames[0] = 'EMAIL';
-            ftypes[0] = 'email';
-            fnames[1] = 'FNAME';
-            ftypes[1] = 'text';
-            fnames[2] = 'LNAME';
-            ftypes[2] = 'text';
-            fnames[3] = 'ADDRESS';
-            ftypes[3] = 'address';
-            fnames[4] = 'PHONE';
-            ftypes[4] = 'phone';
-        }(jQuery));
-        var $mcj = jQuery.noConflict(true);
-    </script>
-    <!--End mc_embed_signup-->
     <script src="script.js"></script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHCRZJL" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 </body>
 
 </html>

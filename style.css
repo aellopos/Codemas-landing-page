@@ -19,9 +19,8 @@ body {
 
 main {
     position: relative;
-    padding:0;
     margin:0;
-
+    padding: 30px 0 30px 0;
     background:rgba(255,255,255,0.8);
 }
 
@@ -85,6 +84,10 @@ form {
     background-color: white;
 }
 
+a:hover {
+    color: #E6007E;
+}
+
 .buttons {
     display: flex;
     justify-content: space-around;
@@ -121,14 +124,11 @@ form {
 
 .pop-up-content h2, .pop-up-content p {
     text-align: center;
-}
-
-.pop-up-content p {
     margin-top: 0;
 }
 
 #timer {
-    width: 50%;
+    width: 20%;
     display: block;
     margin: 0 auto;
 }
