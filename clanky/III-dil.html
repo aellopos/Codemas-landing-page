@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css?v2.1">
+    <link rel="stylesheet" href="design.css?v2.1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Codemas 2021 II. dil</title>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KHCRZJL');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <h1>III. díl Codemas</h1>
+
+            <p>Ahoj, další díl je tady. Dnes se společně mrkneme na funkce a cykly, zároveň si díky novým znalostem vygenerujeme celou herní plochu. Jdeme na to!</p>
+
+            <h2>Funkce</h2>
+
+            <p>Možná jsi o funkcích už slyšel/a, ale krátké opakování určitě neuškodí. Funkce je skupina příkazů, kterou jsme nějak pojmenovali a kterou můžeme v programu volat opakovaně. V programování bychom se měli snažit držet principu DRY - Don't Repeat Yourself, neboli neopakuj se.</p>
+
+            <p>Provádíme-li v programu stejnou věc několikrát, je tento kousek kódu ideálním kandidátem na vytvoření funkce. Z našeho opakovaného kódu vytvoříme funkci, kterou pak z různých míst programu jenom voláme.</p>
+
+            <p>Funkce nám tak umožňují zjednodušit a zpřehlednit kód. Jsou prostě skvělé jako vánoční dárky! No, možná ne úplně, ale jsou tomu blízko. :)</p>
+
+            <p>Funkci začneme vždy slovem <strong>function</strong>, za kterým následuje jméno funkce (jak si my funkci pojmenujeme). Za jménem jsou kulaté závorky, ve kterých jsou tzv. <strong>parametry</strong> funkce. Pokud funkce parametry nemá, zůstanou závorky prázdné (ale být tam musí). A pak už jen do složených závorek {…}, které následují za klasickými závorkami, napíšeme příkazy, které chceme ve funkci mít.</p>
+
+            <p>Když chceme vykonat příkazy uvnitř funkce, stačí funkci zavolat jejím jménem s kulatými závorkami na konci. Do kulatých závorek se píšou parametry (víc později) nebo nic.</p>
+
+            <p>Pojďme se teď vrhnout na vygenerování plochy.</p>
+
+            <p>Základní kostra funkce generateBoard vypadá takto:</p>
+
+            <p class="code">function generateBoard() {
+                // zde budou příkazy, které chceme vykonat po zavolání funkce
+                }
+            </p>
+
+            <p>Co do ní ale napíšeme? Pokud jsme správně pochopili princip, musíme postupně procházet celé to velké pole. Ručně to ale rozhodně dělat nebudeme, použijeme něco, čemu se říká <strong>cyklus</strong>. Cyklus nám dokáže opakovat určité bloky kódu, když je to potřeba. Máme několik různých cyklů (např. for, while, do-while), my v naší hře využijeme primárně cyklus <strong>for</strong>.</p>
+
+            <p>Takový cyklus vypadá následovně:</p>
+
+            <p class="code">for (let i = 0; i < 10; i++) {
+            // zde budou příkazy, které chceme opakovat v cyklu
+}
+            </p>
+
+            <p>Začneme klíčovým slovem for a v klasických závorkách cyklus nastavíme. Nastavení máme rozdělené do tří částí (oddělují se středníkem):</p>
+
+            <ul>
+                <li>let i = 0 – vytváříme řídící proměnnou i</li>
+                <li>i < 10 – definujeme podmínku, do kdy se cyklus bude opakovat (v tomto případě, dokud bude i menší jak 10)</li>
+                <li>i++ – to je tzv. inkrement, aby se nám z cyklu nestal nekonečný cyklus, potřebujeme měnit hodnotu řídící proměnné – i++ nám zajistí, že se po každém opakování zvýší hodnota proměnné i o 1.</li>
+            </ul>
+
+            <p>Vše to, co je mezi složenými závorkami, se bude opakovat. Jakmile se projedou všechny příkazy, program přeskočí zpět ke kulatým závorkám, zkontroluje, jestli hodnota řídící proměnné splňuje podmínku a zvýší hodnotu řídící proměnné o 1. Takhle se cyklus bude opakovat, dokud  nebude splněna podmínka.</p>
+
+            <p>Pojďme si do kódu přidat náš cyklus, který bude procházet pole board:</p>
+            
+            <div class="btn-view">
+                <a class="a-btn pvc" id="III-dil-pvc" href="#hd-content">Pokračovat ve čtení</a>
+            </div>
+
+            <div id="hd-content">
+                <p class="code">for (let y = 0; y < board.length; y++) {
+}
+                </p>
+
+                <p>První část cyklu je nám známa, nastavíme si řídící proměnnou y s počáteční hodnotou 0. V podmínce říkáme, dokud je y menší než board.length. Schválně jsem v sekci o polích mluvil i o jejich délce – přesně v takových případech se nám to hodí, jelikož board.length nám vrátí hodnotu délky pole board. Někdo možná namítne, že známe velikost pole board – tedy 20. Každý program by měl být ale co nejvíce obecný a připravený na změny, pokud bychom změnili velikost pole na 21, musel bychom v tu chvíli myslet na to, abychom to hodnotu všude změnili, což není v lidských silách, proto se snaž vždy psát obecné programy a myslet na tyto případy.
+                První cyklus máme, ale jistě ti došlo, že sice procházíme pole, ale už neprocházíme ta pole, která se nacházejí na těch indexech. Proto musíme vložit do cyklu další cyklus, který se o to postará.
+                </p>
+
+                <p class="code">for (let y = 0; y < board.length; y++) {
+    for (let x = 0; x < board[y].length; x++) {
+    }
+}
+                </p>
+
+                <p>Druhý cyklus je dost podobný, ale je tam pro nás trochu neznámý zápis – <strong>board[y].length</strong>. Znamená to, že <strong>board[y]</strong> si vytáhne data z toho konkrétního indexu, tedy další pole. Tyto cykly nám zajistí, že se projde každý chlíveček v každém poli a my budeme schopni vykreslit mapu. Nezbývá nic jiného než vložit do druhého cyklu podmínku, která bude říkat – pokud bude v daném chlívečku 1, pak vykresli zeď, pokud bude v chlívečku 0, nech blok prázdný. Pro porovnání využijeme operátor <strong>=== (rovnost)</strong>.</p>
+
+                <p class="code">for (let y = 0; y < board.length; y++) {
+    for (let x = 0; x < board[y].length; x++) {
+        if (board[y][x] === 1) {
+            tx.drawImage(wall, x * blockSize, y * blockSize, blockSize, blockSize)
+        }
+    }
+}</p>
+                 
+                <p>Klasickou podmínku definujeme pomocí klíčového slova if a do závorek napíšeme logický výraz, ze kterého vzejde pravda nebo nepravda. V podmínce reagujeme pouze na 1, protože 0 nás nijak nezajímá (nestane se při ní nic).</p>
+
+                <p>Naše funkce generateBoard by měla vypadat následovně:</p>
+
+                <p class="code">function generateBoard() {
+    for (let y = 0; y < board.length; y++) {
+        for (let x = 0; x < board[y].length; x++) {
+            if (board[y][x] === 1) {
+                ctx.drawImage(wall, x * blockSize, y * blockSize, blockSize, blockSize)
+            }
+        }
+    }
+}
+                 </p>
+
+                <p>Pro vykreslení použijeme funkci drawImage. Jako parametr přijímá obrázek, pozici na ose x, pozici na ose y, výšku a šířku (přesně v tomto pořadí a oddělené čárkou).</p>
+
+                <p>Nyní už nám zbývá jen celou funkci zavolat. Na to taky půjdeme chytře. Budeme chtít tuto funkci zavolat ve chvíli, kdy se načte stránka. JavaScript na tuto a podobné události dokáže velice hezky reagovat, tzv. poslouchat. K „poslechu“ využijeme tzv. Poslouchač událostí.</p>
+
+                <h2>Poslouchač událostí</h2>
+
+                <p>Poslouchač událostí bude čekat (poslouchat), zda k události náhodou nedošlo a pokud ano, tak zavolá funkci, o které jsme mu řekli, že je tzv. ovladač události (event handler).</p>
+
+                <p>Posluchače události přidáváme pomocí: objekt.addEventListener('událost', ovladač).</p>
+
+                <ul>
+                    <li>Objekt je objekt, ke kterému chceme ovladač události připojit.</li>
+                    <li>Událost je textový řetězec s názvem události, na kterou se má čekat.</li>
+                    <li>Ovladač je název funkce, která se spustí, když k události dojde.</li>
+                </ul>
+
+                <p>Vypadá to složitě, ale zas tak složité to není. Ukažme si to na konkrétním příkladu, a to na našem kódu z minula:</p>
+
+                <p class="code">window.addEventListener("load", generateBoard)</p>
+
+                <p>Tímto řádkem jsme JavaScriptu řekli, že objekt <strong>window</strong> (okno prohlížeče) bude čekat, dokud v něm nebude všechno načtené (událost <strong>load</strong>). Když se načte kompletní obsah stránky včetně všech obrázků, fontů apod., tak dojde k události a zavolá se funkce <strong>generateBoard</strong> - tedy ta funkce, která je zodpovědná za aktualizaci veškerého dění ve hře.</p>
+                
+                <h2>Na závěr</h2>
+
+                <p>Na světě máme krásné bludiště! Dobrá práce! 😊</p>
+                <p>
+                    Celý kód z dneška najdeš <a href="https://replit.com/@aellopos/03-1">zde</a>. Doufám, že se ti to líbilo a uvidíme se zase u dalšího dílu.
+                </p>
+
+                <p>Pokud s něčím bojuješ, neboj se nám napsat pod příspěvek na naší <a
+                    href="https://www.facebook.com/events/1276972712744334?ref=newsfeed" target="_blank">facebookové
+                    události</a>, rádi ti pomůžeme. K dotazu ideálně pošli i URL adresu s odkazem na tvůj projekt.
+                :) </p>
+
+                <p>Začala sis pohrávat s myšlenkou, že bys chtěla prozkoumat IT trochu víc? Podívej se na <a id="III-dil-kurzy"  href="https://www.czechitas.cz/kalendar" target="_blank">nabídku kurzů od Czechitas</a>, kteří se zaměřují na vzdělávání převážně žen a dětí v IT. Jak si vybrat vhodný kurz zjistíš <a id="III-dil-blog" href="https://www.czechitas.cz/blog/jak-si-vybrat-kurz" target="_blank">zde</a>.</p>
+
+                <p>Michal z Czechitas</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHCRZJL" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+
+</html>
