@@ -57,18 +57,16 @@
             <p>Základní kostra funkce generateBoard vypadá takto:</p>
 
             <p class="code">function generateBoard() {
-                // zde budou příkazy, které chceme vykonat po zavolání funkce
-                }
-            </p>
+// zde budou příkazy, které chceme vykonat po zavolání funkce
+}</p>
 
             <p>Co do ní ale napíšeme? Pokud jsme správně pochopili princip, musíme postupně procházet celé to velké pole. Ručně to ale rozhodně dělat nebudeme, použijeme něco, čemu se říká <strong>cyklus</strong>. Cyklus nám dokáže opakovat určité bloky kódu, když je to potřeba. Máme několik různých cyklů (např. for, while, do-while), my v naší hře využijeme primárně cyklus <strong>for</strong>.</p>
 
             <p>Takový cyklus vypadá následovně:</p>
 
             <p class="code">for (let i = 0; i < 10; i++) {
-            // zde budou příkazy, které chceme opakovat v cyklu
-}
-            </p>
+// zde budou příkazy, které chceme opakovat v cyklu
+}</p>
 
             <p>Začneme klíčovým slovem for a v klasických závorkách cyklus nastavíme. Nastavení máme rozdělené do tří částí (oddělují se středníkem):</p>
 
@@ -88,8 +86,7 @@
 
             <div id="hd-content">
                 <p class="code">for (let y = 0; y < board.length; y++) {
-}
-                </p>
+}</p>
 
                 <p>První část cyklu je nám známa, nastavíme si řídící proměnnou y s počáteční hodnotou 0. V podmínce říkáme, dokud je y menší než board.length. Schválně jsem v sekci o polích mluvil i o jejich délce – přesně v takových případech se nám to hodí, jelikož board.length nám vrátí hodnotu délky pole board. Někdo možná namítne, že známe velikost pole board – tedy 20. Každý program by měl být ale co nejvíce obecný a připravený na změny, pokud bychom změnili velikost pole na 21, musel bychom v tu chvíli myslet na to, abychom to hodnotu všude změnili, což není v lidských silách, proto se snaž vždy psát obecné programy a myslet na tyto případy.
                 První cyklus máme, ale jistě ti došlo, že sice procházíme pole, ale už neprocházíme ta pole, která se nacházejí na těch indexech. Proto musíme vložit do cyklu další cyklus, který se o to postará.
@@ -98,8 +95,7 @@
                 <p class="code">for (let y = 0; y < board.length; y++) {
     for (let x = 0; x < board[y].length; x++) {
     }
-}
-                </p>
+}</p>
 
                 <p>Druhý cyklus je dost podobný, ale je tam pro nás trochu neznámý zápis – <strong>board[y].length</strong>. Znamená to, že <strong>board[y]</strong> si vytáhne data z toho konkrétního indexu, tedy další pole. Tyto cykly nám zajistí, že se projde každý chlíveček v každém poli a my budeme schopni vykreslit mapu. Nezbývá nic jiného než vložit do druhého cyklu podmínku, která bude říkat – pokud bude v daném chlívečku 1, pak vykresli zeď, pokud bude v chlívečku 0, nech blok prázdný. Pro porovnání využijeme operátor <strong>=== (rovnost)</strong>.</p>
 
@@ -123,8 +119,7 @@
             }
         }
     }
-}
-                 </p>
+}</p>
 
                 <p>Pro vykreslení použijeme funkci drawImage. Jako parametr přijímá obrázek, pozici na ose x, pozici na ose y, výšku a šířku (přesně v tomto pořadí a oddělené čárkou).</p>
 
@@ -152,7 +147,7 @@
 
                 <p>Na světě máme krásné bludiště! Dobrá práce! 😊</p>
                 <p>
-                    Celý kód z dneška najdeš <a href="https://replit.com/@aellopos/03-1">zde</a>. Doufám, že se ti to líbilo a uvidíme se zase u dalšího dílu.
+                    Celý kód z dneška najdeš <a target="_blank" href="https://replit.com/@aellopos/03-1">zde</a>. Doufám, že se ti to líbilo a uvidíme se zase u dalšího dílu.
                 </p>
 
                 <p>Pokud s něčím bojuješ, neboj se nám napsat pod příspěvek na naší <a

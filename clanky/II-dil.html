@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css?v2.0">
-    <link rel="stylesheet" href="design.css?v2.0">
+    <link rel="stylesheet" href="../style.css?v2.1">
+    <link rel="stylesheet" href="design.css?v2.1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -58,14 +58,14 @@
             <p>Zatím jsme se naučili, co je to proměnná. Zatím víme, že si do takové proměnné můžeme uložit jen jednu konkrétní hodnotu nebo informaci. Co když jich potřebujeme víc? Třeba seznam jmen apod. Na tyto věci se nám hodí datová struktura s názvem <strong>pole</strong>. Pole je např. toto:</p>
 
             <p class="code">// pole textových řetězců
-                let names = ['Jana', 'Adam', 'Eliška', 'Jirka']</p>
+let names = ['Jana', 'Adam', 'Eliška', 'Jirka']</p>
 
             <p>Najednou máme v proměnné <strong>names</strong> uložených několik hodnot – jmen, se kterými mohu pracovat. </p>
 
             <p>Tady je další ukázka pole:</p>
 
             <p class="code">// pole čísel
-                let numbers = [7, 13, 31, 53, 67]</p>
+let numbers = [7, 13, 31, 53, 67]</p>
 
             <p>V tomto poli je zase uloženo několik čísel. Všimni si, že takové pole začíná a končí hranatou závorkou a jednotlivé hodnoty oddělujeme čárkou (mezera za čárkou není nutná, slouží čistě k větší přehlednosti). </p>
 
@@ -100,11 +100,11 @@
 
             <p>Tady je malá ochutnávka:</p>
 
-            <p class="code">let board = [
-                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                [1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1]
-             ]
-             </p>
+<p class="code">let board = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1]
+]
+    </p>
 
              <p>Máme pole board, který v sobě má další 2 pole, jedno na indexu 0 a jedno na indexu 1. Každé z těchto polí má v sobě hodnoty 0 a 1. Nám pak už jen stačí říct počítači, že pokud v poli narazí na jedničku, tak vykreslí zeď, a pokud na 0, nechá blok jako cestu. Vzpomeňte si, jak jste hráli lodě a umisťovali plavidla do herní plochy (čtverečkovaný papír). My tento princip přenášíme do počítačové podoby a využíváme pole. Celá proměnná board bude vypadat takto a tu si vložme do hry:</p>
 
@@ -113,36 +113,35 @@
             </div>
 
             <div id="hd-content">
-                <p class="code">let board = [
-                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                    [1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1],
-                    [1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1],
-                    [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
-                    [1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
-                    [1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1],
-                    [1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1],
-                    [1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1],
-                    [1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
-                    [1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-                    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1],
-                    [1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1],
-                    [1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
-                    [1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1],
-                    [1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1],
-                    [1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1],
-                    [1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1],
-                    [1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1],
-                    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1],
-                    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-                 ]
-                 </p>
+<p class="code">let board = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
+    [1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1],
+    [1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1],
+    [1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+    [1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1],
+    [1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1],
+    [1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1],
+    [1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1],
+    [1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+ ]</p>
 
                 <p>Naše pole board má délku 20 a indexy od 0 do 19. Na každém indexu je pole, které má délku 20 a indexy od 0 do 19.</p>
 
                 <p>Máme návrh mapy a vysvětlili jsme si princip, jakým budeme s polem pracovat. Teď ho ale reálně potřebujeme vykreslit. V prvé řadě si vložme do kódu k proměnným tyto dva řádky:</p>
 
                 <p class="code">let wall = new Image()
-                    wall.src = "images/zed.png"</p>
+wall.src = "images/zed.png"</p>
 
                 <p>Na prvním řádku vytváříme novou proměnnou s názvem <strong>wall</strong>, do ní vkládáme informaci o tom, že v ní chceme uchovávat nějaký obrázek. Na druhém řádku pak specifikujeme přesně ten obrázek, který do proměnné chceme uložit a který využijeme při vykreslování mapy.</p>
 
