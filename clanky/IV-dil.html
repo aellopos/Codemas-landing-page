@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css?v2.1">
+    <link rel="stylesheet" href="design.css?v2.1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Codemas 2021 IV. dil</title>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KHCRZJL');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <h1>IV. díl Codemas</h1>
+
+            <p>Máme za sebou generování mapy, dnes se vrhneme na generování hlavní postavy. Spoustu věcí už jsme si řekli v předchozích dílech, a tak to dnes nebude tak dlouhé. 😊</p>
+
+            <h2>Vytvoření herního objektu</h2>
+
+            <p>Hráče si v JavaScriptu vydefinujeme jako herní objekt. Ten vypadá následovně:</p>
+
+            <p class="code">let player = {
+    x: 8,
+    y: 1
+}</p>
+
+            <p>Herní objekt je datová struktura, ve které budeme uchovávat údaje o našem hráči. Nám stačí uchovávat dvě informace, a to pozici x a y na naší herní ploše. Jinak lze uchovávat libovolný počet informací - ty musejí být vždy oddělené čárkou.</p>
+
+            <p>Jelikož budeme postavu vykreslovat jako obrázek, musíme si založit proměnnou, do které obrázek uložíme.</p>
+
+            <p class="code">let hero = new Image()
+hero.src = "images/down.png"</p>
+
+            <p>Připadá ti ten kód povědomý? Včera jsme takto zakládali proměnnou pro zeď. Máme herní objekt a obrázek a jak už jsem zmiňoval pár řádků nahoru, budeme muset postavu vykreslit.</p>
+
+            <h2>Vykreslení hráče</h2>
+
+            <p>Vytvoříme si novou funkci s názvem <strong>draw</strong>.</p>
+
+            <p class="code">function draw() {
+ 
+}</p>
+
+            <p>Tato funkce nám bude sloužit nejen k vykreslení hráče, ale bude jakousi hlavní metodou naší hry. Přidáme si do funkce příkaz nutný k vykreslení postavy:</p>
+
+            <p class="code">ctx.drawImage(hero,player.x * blockSize, player.y * blockSize, blockSize, blockSize)</p>
+
+            <p>Samotnou funkci jsme ještě nezavolali, proto se nám po spuštění žádný hráč nezobrazí. Včera jsme si na konci dne přidali do kódu <strong>poslouchač události</strong>, který čekal na načtení stránky. Jakmile se načte stránka, zavolá se funkce <strong>generateBoard</strong>. Pojďme toto trošku upravit, funkci <strong>generateBoard</strong> zavoláme ve funkci <strong>draw</strong> a funkce <strong>draw</strong> se nám zavolá při načtení stránky. Upravený kód vypadá následovně:</p>
+
+            <p class="code">function draw() {
+    generateBoard()
+    ctx.drawImage(hero,player.x * blockSize, player.y * blockSize, blockSize, blockSize)
+}
+
+
+window.addEventListener("load", draw)</p>
+
+            <p>Pokud nyní hru zapneme, vykreslí se nám do ní i hlavní postava.</p>
+
+            <h2>Pohyb hlavní postavy</h2>
+
+            <div class="btn-view">
+                <a class="a-btn pvc" id="IV-dil-pvc" href="#hd-content">Pokračovat ve čtení</a>
+            </div>
+
+            <div id="hd-content">
+
+            <p>Dnes ještě uděláme jednu důležitou věc, a to pohyb postavy. 😊 Naše hra bude reagovat na stisk klávesy, přičemž konkrétněbudeme využívat šipky. Přidejme si tedy na konec skriptu následující kód:</p>
+
+            <p class="code">document.body.addEventListener("keydown", function(e) {
+    keys[e.keyCode] = true
+    draw()
+})
+
+document.body.addEventListener("keyup", function(e) {
+    keys[e.keyCode] = false 
+    draw()
+})</p>
+
+            <p>Na tělo celého dokumentu umístíme dva poslouchače události <strong>keydown</strong> a <strong>keyup</strong>. <strong>Keydown</strong> se zaktivuje ve chvíli, kdy stiskneme nebo budeme držet libovolnou klávesu, <strong>keyup</strong> pak zareaguje při uvolnění klávesy. Jedna bez druhého v našem případě nemůže fungovat. Každá klávesa má svůj kód, takže pokud budeš nějakou klávesu držet nebo ji stiskneš, tak se v poli keys označí jako <strong>true</strong>. Pokud ji pustíš, označí se jako <strong>false</strong>. Aby nám vše fungovalo tak, jak má, musíme vytvořit novou proměnnou<strong>keys</strong>, do které uložíme prázdné pole. Na začátek celého našeho skriptu vlož mezi proměnné tento řádek kódu:</p>
+
+            <p class="code">let keys = []</p>
+
+            <p>Samotné poslouchače v sobě volají funkci <strong>draw</strong> a to z jednoduchého důvodu - při každém stisku chceme aktualizovat pozici i stav hry.</p>
+
+            <p>Nyní si vytvoříme funkci, která se bude čistě starat o pohyb hlavní postavy a nazveme si ji <strong>movement</strong>.</p>
+
+            <p class="code">function movement() {
+    if (keys[39]) {
+        // šipka doprava
+        hero.src = "images/right.png"
+        player.x++
+    }
+
+    if (keys[37]) {
+        // šipka doleva
+        hero.src = "images/left.png"
+        player.x--
+    }
+
+    if (keys[38]) {
+        // šipka nahoru
+        hero.src = "images/up.png"
+        player.y--
+    }
+
+    if (keys[40]) {
+        // šipka dolů
+        hero.src = "images/down.png"
+        player.y++
+    }
+}</p>
+
+            <p>V této funkci jsou 4 podmínky. Každá podmínka se kouká do pole <strong>keys</strong> a zjišťuje, jestli se stiskla šipka doprava, doleva, nahoru nebo dolů. V každé podmínce se i překreslí obrázek hlavní postavy podle směru, kterým jdeme. V každé podmínce potom měníme i pozici na ose x nebo y. Funkci zavoláme ve funkci <strong>draw</strong>.</p>
+
+            <p class="code">function draw() {
+    generateBoard()
+    movement()
+    ctx.drawImage(hero,player.x * blockSize, player.y * blockSize, blockSize, blockSize)
+}</p>
+
+            <p>Když si zkusíme nyní hru spustit a pohnout se libovolným směrem, funguje to! Jsou zde jen 2 drobnosti, na kterých musíme zapracovat. Zaprvé, zatím jsme nikde nedefinovali „náraz do zdi“, takže se hlavní postava může pohybovat libovolně po bludišti (dokonce i za něj). Může se ti tak stát, že postava při stisku klávesy zmizí a při dalším se zase objeví - je to způsobené canvasem jako takovým a bohužel s tím nic neuděláme.</p>
+
+            <p>A druhá věc, kterou dnes vyřešíme, je to, že naše postava zůstává vykreslená i na polích, kde se nenacházíme, což určitě není dobře.</p>
+
+            <p>Toto vyřešíme funkcí <strong>clearRect</strong>, kterou přidáme na začátek naší funkce <strong>draw</strong> před <strong>generateBoard</strong>.</p>
+
+            <p class="code">function draw() {
+    ctx.clearRect(player.x * blockSize, player.y * blockSize, blockSize, blockSize)
+    generateBoard()
+    movement()
+    ctx.drawImage(hero,player.x * blockSize, player.y * blockSize, blockSize, blockSize)
+}</p>
+
+            <p>Tato funkce nám zajistí, že se hlavní postava na začátku funkce smaže ze své konkrétní pozice a vykreslí se na nové pozici díky naší funkci <strong>drawImage</strong> na konci.</p>
+
+                <h2>Na závěr</h2>
+                <p>
+                    Hurááá, hýbeme se! :D A naše hra pomalu získává finální podobu. Dobrá práce! Celý kód z dnešní hodiny najdeš <a href="https://replit.com/@aellopos/04-1" target="_blank">zde</a>.
+                </p>
+
+                <p>Pokud s něčím bojuješ, neboj se nám napsat pod příspěvek na naší <a
+                    href="https://www.facebook.com/events/1276972712744334?ref=newsfeed" target="_blank">facebookové
+                    události</a>, rádi ti pomůžeme. K dotazu ideálně pošli i URL adresu s odkazem na tvůj projekt.
+                :) </p>
+
+                <p>Začala sis pohrávat s myšlenkou, že bys chtěla prozkoumat IT trochu víc? Podívej se na <a id="Codemas-kurzy"  href="https://www.czechitas.cz/kalendar" target="_blank">nabídku kurzů od Czechitas</a>, kteří se zaměřují na vzdělávání převážně žen a dětí v IT. Jak si vybrat vhodný kurz zjistíš <a id="Codemas-blog" href="https://www.czechitas.cz/blog/jak-si-vybrat-kurz" target="_blank">zde</a>.</p>
+
+                <p>Michal z Czechitas</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHCRZJL" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+
+</html>
