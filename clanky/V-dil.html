@@ -38,16 +38,79 @@
         <div class="content">
             <h1>V. díl Codemas</h1>
 
+            <p>Vítám tě zpět u dalšího dílu! Minule jsme rozpohybovali naši hlavní postavu, ale zatím prochází zdmi jako bílá paní, a to nechceme. Na to se tedy dnes zaměříme. </p>
+
+            <p>Abychom něčeho takového dosáhli, určitě se nám budou hodit podmínky, které definují, za jakých okolností se lze posunout dál. Vytvoříme si proto novou funkci s názvem canMove. Jak jsme si říkali už dříve, je dobré mít jednotlivé funkcionality rozdělené do funkcí a volat je dle potřeby.</p>
+
+            <p class="code">function canMove(x, y) {
+}</p>
+
+            <p>Tato funkce je trochu jiná než ostatní, které jsme zatím vytvářeli. Vidíme v závorkách <strong>x</strong> a <strong>y</strong> . To jsou takzvané parametry. Jednoduše chceme do funkce poslat nějaké informace, se kterými může funkce pracovat. V našem případě je to pozice hlavní postavy (tedy souřadnice x a y).</p>
+
+            <p>Teď musíme vymyslet samotnou podmínku, což už ovšem nebude tak jednoduché. Těch věcí, na které si musíme dávat pozor, je hned několik. Klasická podmínka nám tady stačit nebude, proto se dnes naučíme novinku – logické operátory <strong>AND</strong> a <strong>OR</strong>. </p>
+
+            <h2>Logické operátory</h2>
+
+            <p>Tyto operátory nám slouží k sestavení složitějšího výrazu, přičemž výsledkem ale pořád bude pravda (true), nebo nepravda (false).</p>
+
+            <p>Logický operátor <strong>AND</strong> se v JavaScriptu používá pomocí znaku <strong>&&</strong>. Znamená to, že všechny části výrazu musejí být pravdivé, aby z celého výrazu vzešla pravda. Pojďme si to ukázat na příkladu: </p>
+
+            <p><i>„Pokud chceme dát například párek v rohlíku, musíme mít párek <strong>A</strong> rohlík.“ </i></p>
+
+            <p>V tuto chvíli mám 2 výrazy (mít párek, mít rohlík) oddělené písmenem A. Logicky musejí obě části platit, abychom si mohli připravit párek v rohlíku. Stejným způsobem se vyhodnocují podmínky v programování.</p>
+
+            <p>Na druhou stranu <strong>OR</strong> se v JavaScriptu používá pomocí znaku <strong>||</strong>. Znamená to <strong>NEBO</strong>. Stačí tedy, aby jen jedna část složeného výrazu byla pravdivá, aby z celého výrazu vzešla pravda. Například:</p>
 
             <div class="btn-view">
-                <a class="a-btn pvc" id="IV-dil-pvc" href="#hd-content">Pokračovat ve čtení</a>
+                <a class="a-btn pvc" id="V-dil-pvc" href="#hd-content">Pokračovat ve čtení</a>
             </div>
 
             <div id="hd-content">
 
-                <h2>Na závěr</h2>
-                
+                <p><i>„Do těsta přidáme šťávu z limetky <strong>NEBO</strong> šťávu z citrónu.“</i></p>
 
+                <p>V tomto výrazu jsou opět dvě tvrzení (šťáva z limety, šťáva z citronu), které jsou oddělené slovem NEBO – tedy nám stačí mít jen jedno z toho, abychom mohli upéct osvěžující koláč Naše funkce <strong>canMove</strong> bude vracet logickou hodnotu <strong>true</strong>, nebo <strong>false</strong>. Pojďme si do ní napsat podmínku:</p>
+
+                <p class="code">function canMove(x, y) {
+    return (y >= 0 && y < board.length && x >= 0 && x < board[y].length && board[y][x] != 1)
+}</p>
+
+                <p>Pomocí klíčového slova <strong>return</strong> můžeme z funkce dostat nějakou hodnotu zpět při zavolání. Za <strong>return</strong> máme celou podmínku, která v sobě má spoustu logických spojek <strong>AND</strong>. První 4 části nám zajišťují, abychom se nedostali za hranice bludiště, a poslední kontroluje, jestli se nesnažíme vstoupit na pole s hodnotou 1, tedy zeď.</p>
+
+                <p>Toto nám naprosto stačí a nyní tuto funkci musíme zavolat na správném místě. Logicky ji zavoláme v podmínkách u stisku šipek.</p>
+
+                <p class="code">function movement() {
+    if (keys[39] <span class="hg-code">&& canMove(player.x + 1, player.y)</span>) {
+        // šipka doprava
+        hero.src = "images/pernicek_doprava.png"
+        player.x++
+    }
+
+    if (keys[37] <span class="hg-code">&& canMove(player.x - 1, player.y)</span>) {
+        // šipka doleva
+        hero.src = "images/pernicek_doleva.png"
+        player.x--
+    }
+
+    if (keys[38] <span class="hg-code">&& canMove(player.x, player.y - 1)</span>) {
+        // šipka nahoru
+        hero.src = "images/pernicek_nahoru.png"
+        player.y--
+    }
+
+    if (keys[40] <span class="hg-code">&& canMove(player.x, player.y + 1)</span>) {
+        // šipka dolů
+        hero.src = "images/pernicek_dolu.png"
+        player.y++
+    }
+}</p>
+
+                <p>Mezi polem <strong>keys</strong> a funkcí <strong>canMove</strong> je opět logická spojka <strong>AND</strong>. Na to, aby byla podmínka splněna, musíme stisknout klávesu a zároveň se na dalším poli nenachází zeď (podle směru).</p>
+
+                <h2>Na závěr</h2>
+
+                <p>Napsali jsme sice jednu funkci, ale zato hodně důležitou! Teď už se postava bude pohybovat jen v prostorech bludiště. Kód z dnešního dne najdeš <a href="https://replit.com/@aellopos/05-1" target="_blank">zde</a>. :)</p>
+                
                 <p>Pokud s něčím bojuješ, neboj se nám napsat pod příspěvek na naší <a
                     href="https://www.facebook.com/events/1276972712744334?ref=newsfeed" target="_blank">facebookové
                     události</a>, rádi ti pomůžeme. K dotazu ideálně pošli i URL adresu s odkazem na tvůj projekt.

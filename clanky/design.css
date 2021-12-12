@@ -25,6 +25,11 @@ ul {
     display: none;
 }
 
+.hg-code {
+    color: #E6007E;
+    text-decoration: underline;
+}
+
 img {
     max-width: 100%;
 }
