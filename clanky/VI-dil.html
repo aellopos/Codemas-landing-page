@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css?v2.1">
+    <link rel="stylesheet" href="design.css?v2.1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../pictures/pernicek.png">
+    <title>Codemas 2021 VI. díl</title>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KHCRZJL');
+    </script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    <main>
+        <div class="content">
+            <h1>VI. díl Codemas</h1>
+
+            <p>Ahoj, vítej u dalšího dílu vánočního kódování. Už se umíme hýbat, nenarážíme do zdí a ani neodcházíme pryč z herního pole – paráda! Pojďme si do hry dnes přidat další předměty, které pan Perníček na své cestě posbírá.</p>
+
+            <p>Předmětů je celkem 6 a každý je reprezentován nějakým obrázkem ve složce images. Budeme muset tedy vytvořit šest dalších proměnných pro 6 obrázků, které si přidáme na začátek kódu k našim již vytvořeným proměnným.</p>
+
+            <p class="code">let wall = new Image()
+wall.src = "images/zed.png"
+
+let hero = new Image()
+hero.src = "images/pernicek_dolu.png"
+
+let darek2 = new Image()
+darek2.src = "images/darek2.png"
+
+let darek3 = new Image()
+darek3.src = "images/darek3.png"
+
+let hulka = new Image()
+hulka.src = "images/hulka.png"
+
+let hvezda = new Image()
+hvezda.src = "images/hvezda.png"
+
+let kapr = new Image()
+kapr.src = "images/kapr.png"
+
+let ponozky = new Image()
+ponozky.src = "images/ponozky.png"</p>
+
+            
+            <p>Kód se opakuje, pouze vytváříme 6 unikátních proměnných pro předměty, stejně jako pro postavu nebo zeď. Teď se ale musíme zamyslet, jak tyto předměty budeme vykreslovat do hry. Určitě bude mít každý z nich své souřadnice <strong>x</strong> a <strong>y</strong>. Předmětů je celkem 6, tudíž můžeme využít nějaké pole a obdobně jako u generování herní plochy budeme toto pole postupně pomocí cyklu procházet a předměty vykreslovat. Pokud už si tak čistě nepamatuješ, jak se pole a cykly využívají, mrkni na <a href="II-dil.html" target="_blank" id="II-dil">2. díl</a> a <a href="III-dil.html" target="_blank" id="III-dil">3. díl</a>, kde je to podrobně popsané. :)</p>
+
+            <p>Pojďme si vytvořit pole s názvem <strong>items:</strong></p>
+
+            <p class="code">let items = []</p>
+
+            <p>Nyní je potřeba naplnit pole předměty s jejich pozicí x a y. Vytvoříme si tedy herní objekty. Na toto je dobré si taky vytvořit samostatnou funkci, kterou si nazveme <strong>createitems</strong>:</p>
+
+            <p class="code">function createitems() {
+ 
+}</p>
+
+            <p>V rámci této funkce budeme plnit pole <strong>items</strong> předměty. Pro tuto akci využijeme další funkci <strong>push</strong>, kterou můžeme na tom poli zavolat:</p>
+
+            <p class="code">items.push({
+    x: 1,
+    y: 1,
+    imageObject: darek2
+})</p>
+
+            <p><strong>Push</strong> najdeme například u dveří a je to signál, že na dveře máme zatlačit, abychom je otevřeli. Tady budeme do pole “tlačit” herní objekty. Každý objekt bude mít souřadnice x a y a zároveň i funkci <strong>imageObject</strong>, kam uložíme proměnnou, ve které se skrývá obrázek. Tímto způsobem do pole vložíme všechny předměty a funkce bude vypadat následovně:</p>
+
+            <p class="code">function createitems() {
+    items.push({
+        x: 1,
+        y: 1,
+        imageObject: darek2
+    })
+
+    items.push({
+        x: 1,
+        y: 15,
+        imageObject: darek3
+    })
+
+    items.push({
+        x: 14,
+        y: 12,
+        imageObject: hulka
+    })
+
+    items.push({
+        x: 15,
+        y: 18,
+        imageObject: hvezda
+    })
+
+    items.push({
+        x: 5,
+        y: 11,
+        imageObject: kapr
+    })
+
+    items.push({
+        x: 15,
+        y: 1,
+        imageObject: ponozky
+    })
+}</p>
+
+            <p>Funkci máme hotovou, zbývají nám momentálně jen 2 věci – někde tuto funkci zavolat a zajistit vykreslení jednotlivých předmětů. Začneme voláním funkce. Naplnění pole by mělo proběhnout jen jednou a ideálně hned na startu hry. Problémem je, že nyní se nám opakuje stále funkce <strong>draw.</strong> Proto si vytvoříme ještě jednu funkci s názvem <strong>startGame</strong>, která bude zodpovědná za prvotní nastavení hry:</p>
+
+            <p class="code">function startGame() {
+    createitems()
+    draw()
+}</p>
+
+            <p>Funkce v prvé řadě naplní pole předměty a zavolá funkci <strong>draw</strong>, která poběží zbytek hry. Z tohoto důvodu musíme trochu pozměnit náš poslouchač události, který po načtení stránky automaticky spouští funkci <strong>draw</strong>.</p>
+
+            <p class="code">window.addEventListener("load", startGame)</p>
+
+            <p>Nyní by se měla automaticky spouštět <strong>startGame</strong>. A teď ještě zmiňované vykreslování – tady to nebudeme mít složité, jednoduše vložíme do naší funkce <strong>generateBoard</strong> další cyklus:</p>
+            
+            <div class="btn-view">
+                <a class="a-btn pvc" id="VI-dil-pvc" href="#hd-content">Pokračovat ve čtení</a>
+            </div>
+
+            <div id="hd-content">
+                <p class="code">for (let i = 0; i < items.length; i++) {
+    ctx.drawImage(
+        items[i].imageObject,
+        items[i].x * blockSize,
+        items[i].y * blockSize,
+        blockSize,
+        blockSize
+    )
+}</p>
+
+                <p>Tento cyklus bude postupně procházet pole a pomocí funkce <strong>drawImage</strong> ho vykreslovat do bludiště. Funkce <strong>generateBoard</strong> po úpravě vypadá následovně:</p>
+
+                <p class="code">function generateBoard() {
+    for (let y = 0; y < board.length; y++) {
+        for (let x = 0; x < board[y].length; x++) {
+            if (board[y][x] === 1) {
+                ctx.drawImage(wall, x * blockSize, y * blockSize, blockSize, blockSize)
+            }
+        }
+    }
+
+    <span class="hg-code">for (let i = 0; i < items.length; i++) {
+        ctx.drawImage(
+        items[i].imageObject,
+        items[i].x * blockSize,
+        items[i].y * blockSize,
+        blockSize,
+        blockSize
+        )
+    }</span>
+}</p>
+
+                <h2>Sbírání předmětů</h2>
+
+                <p>Pro tuto akci si vytvoříme další funkci a bude se jmenovat <strong>collect</strong>.</p>
+
+                <p class="code">function collect() {
+  
+}</p>
+
+                <p>A teď se budeme muset zamyslet, jak nastavit algoritmus pro sbírání. Víme, že předmět by se měl sebrat ve chvíli, kdy se postavička bude nacházet na jeho pozici, tudíž musíme vymyslet nějakou podmínku. A abychom mohli kontrolovat všechny předměty, musíme celé pole <strong>items</strong> procházet a až v cyklu kontrolovat jejich sbírání. Kód tedy bude vypadat takto:</p>
+
+                <p class="code">function collect() {
+    for (let i = 0; i < items.length; i++) {
+        console.log(player.x + " " + items[i].x);
+        if (player.x == items[i].x && player.y == items[i].y) {
+        items.splice(i, 1)
+        increaseScore()
+        }
+    }
+}</p>
+
+                <p>Procházíme celé pole a v podmínce kontrolujeme, jestli se naše postava nachází na stejném místě jako předmět. Pokud ano, využijeme funkci <strong>splice</strong>, která smaže daný předmět z pole – už se nebude zobrazovat. Funkce <strong>splice</strong> přijímá 2 parametry – index v poli a počet  předmětů, které chceme smazat. Jako index uvádíme <strong>i</strong>, tedy řídící proměnnou cyklu, a mažeme jeden předmět. Nyní musíme funkci opět někde zavolat. Dává smysl, abychom ji zavolali ve funkci <strong>draw</strong>. A je dobré ji zavolat až po uskutečnění pohybu – tedy po zavolání funkce <strong>movement</strong>. Kód pak bude vypadat následovně:</p>
+
+                <p class="code">function draw() {
+    ctx.clearRect(player.x * blockSize, player.y * blockSize, blockSize, blockSize)
+
+    generateBoard()
+    movement()
+    <span class="hg-code">collect()</span>
+
+    ctx.drawImage(hero, player.x * blockSize, player.y * blockSize, blockSize, blockSize)
+}</p>
+
+                <p>Pokud teď hru spustíme a zkusíme si sebrat nějaký předmět, tak to funguje, dobrá práce! </p>
+
+                <h2>Skóre</h2>
+
+                <p>Dnes uděláme ještě jednu důležitou funkcionalitu, a to přidávání skóre. Abychom mohli přidávat skóre a propisovat ho do stránky, musíme JavaScript propojit s elementem, který skóre zobrazuje. Vytvořme si nový herní objekt s názvem <strong>game</strong>, kde si uložíme odkaz na HTML element, do kterého budeme vkládat skóre. Vytvoříme si i vlastnost <strong>score</strong>, ve které budeme uchovávat aktuální skóre.</p>
+
+                <p class="code">let game = {
+    scoreElement: document.getElementById("score"),
+    score: 0
+}</p>
+
+                <p>Přidáme si další funkci s názvem <strong>increaseScore</strong>, ve které zvýšíme hodnotu <strong>score</strong> a zároveň skóre vypíšeme.</p>
+
+                <p class="code">function increaseScore() {
+    game.score++
+    game.scoreElement.textContent = `${game.score}/6`
+}</p>
+
+                <p><strong>Score++</strong> jistě poznáváme – vzpomeň si na inkrement v cyklech. Zvyšujeme tím hodnotu proměnné o 1. Abychom skóre vypsali, využijeme funkce <strong>textContent</strong>. Ta nám umožňuje změnit textový obsah elementu. My do něj vložíme naši proměnnou <strong>score</strong>. Nakonec funkci <strong>increaseScore</strong> zavoláme ve funkci <strong>collect</strong>:</p>
+
+                <p class="code">function collect() {
+    for (let i = 0; i < items.length; i++) {
+            if (player.x == items[i].x && player.y == items[i].y) {
+            items.splice(i, 1)
+            <span class="hg-code">increaseScore()</span>
+        }
+    }
+}</p>
+
+                <h2>Dobrovolný úkol</h2>
+
+                <p>Do hry jsme si přidali 6 předmětů. Ve složce s obrázky se nachází jeden další - <strong>rukavice.png</strong>. Zkus si tento předmět přidat do hry a nezapomeň změnit skóre ze 6 na 7. Až to budeš mít hotové, udělej screenshot obrazovky a pošli nám ho do komentářů pod příspěvek na Facebooku. :)</p>
+
+                <h2>Na závěr</h2>
+
+                <p>Dnešní díl byl trochu delší, na druhou stranu jsme naši hru posunuli o velký kus dál. Vygenerovali jsme všechny potřebné předměty a už je umíme i sbírat. </p>
+
+                <p>Naše hra je téměř hotová, zbývá nám jen doplnit časovač a naprogramovat konec hry. Vrhneme se na to v následujících dvou dílech, kdy hru dokončíme. Kód z dnešní lekce najdeš <a href="https://replit.com/@aellopos/06-1" target="_blank">zde</a>.</p>
+                
+                <p>Pokud s něčím bojuješ, neboj se nám napsat pod příspěvek na naší <a
+                    href="https://www.facebook.com/events/1276972712744334?ref=newsfeed" target="_blank">facebookové
+                    události</a>, rádi ti pomůžeme. K dotazu ideálně pošli i URL adresu s odkazem na tvůj projekt.
+                :) </p>
+
+                <p>Začala sis pohrávat s myšlenkou, že bys chtěla prozkoumat IT trochu víc? Podívej se na <a id="Codemas-kurzy"  href="https://www.czechitas.cz/kalendar" target="_blank">nabídku kurzů od Czechitas</a>, kteří se zaměřují na vzdělávání převážně žen a dětí v IT. Jak si vybrat vhodný kurz zjistíš <a id="Codemas-blog" href="https://www.czechitas.cz/blog/jak-si-vybrat-kurz" target="_blank">zde</a>.</p>
+
+                <p>Michal z Czechitas</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHCRZJL" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+
+</html>
